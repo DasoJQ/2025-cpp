@@ -13,24 +13,41 @@ int main(int argc, char** argv)
 	int c = 0;
 	int d = 0;
 	int iter = 0;
-	int arr[ARRAY_SIZE] = {};
+	int arrOne[ARRAY_SIZE] = {};
+	int arrTwo[ARRAY_SIZE] = {};
+	int arrThree[ARRAY_SIZE] = {};
 	scanf_s("%d %d %d %d %d", &n, &a, &b, &c, &d);
 	a -= 1;
+	b -= 1;
 	c -= 1;
+	d -= 1;
 	for(iter; iter != n; iter++)
 	{
-		arr[iter] = iter + 1;
+		arrOne[iter] = iter + 1;
+		arrTwo[iter] = iter + 1;
+		arrThree[iter] = iter + 1;
 	}
-	for(;;)
+	iter = 0;
+	for(iter; iter < n; iter++)
 	{
+		if((a <= iter) && (iter <= b))
+		{
+			arrTwo[iter] = arrThree[b + a - iter];
+			arrOne[iter] = arrTwo[iter];
+		}
 	}
-	for(;;)
+	iter = 0;
+	for(iter; iter < n; iter++)
 	{
+		if((c <= iter) && (iter <= d))
+		{
+			arrOne[iter] = arrTwo[d + c - iter];
+		}
 	}
 	iter = 0;
 	for(iter; iter != n; iter++)
 	{
-		printf("%d ", arr[iter]);
+		printf("%d ", arrOne[iter]);
 	}
 	return 0;
 }
