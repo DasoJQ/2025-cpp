@@ -7,6 +7,7 @@ int main(int argc, char** argv)
 {
 	int n = 0;
 	int iter = 0;
+	long int buff = 0;
 	long int* arr;
 	scanf("%d", &n);
 	arr = (long int*)calloc(n, sizeof(long int));
@@ -15,8 +16,11 @@ int main(int argc, char** argv)
 		scanf("%ld", &arr[iter]);
 	}
 	iter = 0;
-	for(iter; iter < n; iter++)
+	for(iter; iter < n / 2; iter++)
 	{
+		buff = arr[iter];
+		arr[iter] = arr[n - iter - 1];
+		arr[n - iter - 1] = buff;
 	}
 	iter = 0;
 	for(iter; iter < n; iter++)
